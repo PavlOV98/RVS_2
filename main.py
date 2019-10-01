@@ -28,5 +28,5 @@ def simple():
     return "numb error"
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     app.run()
