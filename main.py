@@ -1,5 +1,5 @@
 from flask import Flask, request
-import psycopg2-binary
+import pymysql.cursors
 
 
 app = Flask(__name__)
@@ -7,8 +7,7 @@ app = Flask(__name__)
 #curl -d "numb=2" 127.0.0.1:5000
 @app.route("/", methods=['POST'])
 def simple():
-    conn = psycopg2.connect(dbname='database', user='db_user',
-                            password='mypassword', host='localhost')
+    conn = pymysql.connect(host="localhost",user="yann",passwd="yann",db="doctorat")
     cursor = conn.cursor()
 
     buf = int(request.form.get('numb'))
