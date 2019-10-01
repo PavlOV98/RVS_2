@@ -4,6 +4,7 @@ import os
 
 app = Flask(__name__)
 
+
 #curl -d "numb=2" 127.0.0.1:5000
 @app.route("/", methods=['POST'])
 def simple():
