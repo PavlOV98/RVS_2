@@ -1,13 +1,14 @@
 from flask import Flask, request
 import pymysql.cursors
-
+import os
 
 app = Flask(__name__)
 
 #curl -d "numb=2" 127.0.0.1:5000
 @app.route("/", methods=['POST'])
 def simple():
-    conn = pymysql.connect(host="localhost",user="yann",passwd="yann",db="doctorat")
+
+    conn = pymysql.connect(host=os.environ.get('DB_HOST'),user="user",passwd="password",db=os.environ.get('DB_NAME'))
     cursor = conn.cursor()
 
     buf = int(request.form.get('numb'))
