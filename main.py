@@ -1,5 +1,5 @@
 from flask import Flask, request
-import psycopg2
+import psycopg2-binary
 
 
 app = Flask(__name__)
@@ -28,5 +28,5 @@ def simple():
     return "numb error"
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     app.run()
