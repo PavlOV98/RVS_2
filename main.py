@@ -13,12 +13,15 @@ def simple():
     cursor = conn.cursor()
 
     buf = int(request.form.get('numb'))
-
+    cursor.execute('SELECT * FROM list WHERE value=%s', (buf+1,))
+    ret = cursor.fetchone()
+    if ret == 0:
+        return (buf + 1).__str__()
     cursor.execute('SELECT * FROM list WHERE value=%s', (buf,))
     ret = cursor.fetchone()
     if ret == 0:
         cursor.execute('INSERT INTO list (numb) VALUES %s', (buf,))
-        cursor.execute('INSERT INTO list (numb) VALUES %s', (buf-1,))
+        #cursor.execute('INSERT INTO list (numb) VALUES %s', (buf-1,))
         conn.commit()
         cursor.close()
         conn.close()
