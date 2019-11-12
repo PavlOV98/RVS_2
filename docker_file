@@ -1,0 +1,5 @@
+FROM python:3-alpine
+ADD /home/user/PycharmProjects/RVS_2/main.py / 
+CMD ["python", "main.py"]
+
+

@@ -15,8 +15,9 @@ def simple():
     buf = int(request.form.get('numb'))
     cursor.execute('SELECT * FROM list WHERE value=%s', (buf+1,))
     ret = cursor.fetchone()
-    if ret == 0:
-        return (buf + 1).__str__()
+    if ret != 0:
+        return "numb +1 error"
+        #return (buf + 1).__str__()
     cursor.execute('SELECT * FROM list WHERE value=%s', (buf,))
     ret = cursor.fetchone()
     if ret == 0:
